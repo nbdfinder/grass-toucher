@@ -1,0 +1,5 @@
+# build artifact — regenerated for each store upload
+grass-toucher-*.zip
+
+# local tooling state
+.claude/

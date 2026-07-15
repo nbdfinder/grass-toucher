@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Grass Toucher",
+  "version": "1.0.0",
+  "description": "Finally, a way to touch grass without going outside. An oddly satisfying pocket lawn that grows shaggier the longer you browse.",
+  "homepage_url": "https://tyleredic.com",
+  "permissions": ["storage", "alarms", "idle"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Grass Toucher — your lawn awaits",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
