@@ -535,6 +535,43 @@
     return alive;
   }
 
+  // A truly neglected lawn should already be a mess of dandelions, not just
+  // tall grass — real lawns fill with weeds well before the grass itself
+  // finishes regrowing. simulateOffline() cascades generations through the
+  // full growth→flower→puff→dormancy chain, which realistically takes many
+  // hours to reach a full population; this tops the result up toward max
+  // based on real (unscaled) time away, so "a while" reads as an infestation
+  // the way it would outside. Ramps from a light scattering to fully overrun.
+  const INFESTATION_STARTS = 15 * 60;  // 15 real minutes: weeds start piling up
+  const FULL_INFESTATION = 90 * 60;    // 90 real minutes: lawn is fully overrun
+
+  function spawnNeglectDandelion() {
+    const d = makeDandelion();
+    d.delay = 0;
+    const roll = Math.random();
+    if (roll < 0.3) {
+      d.growth = 0.3 + Math.random() * 0.65;
+    } else if (roll < 0.65) {
+      d.growth = 1;
+      d.stage = 'flower';
+      d.stageT = Math.random() * d.flowerFor;
+    } else {
+      d.growth = 1;
+      d.stage = 'puff';
+      d.stageT = Math.random() * d.puffFor;
+    }
+    return d;
+  }
+
+  function topUpForNeglect(elapsedReal) {
+    if (elapsedReal < INFESTATION_STARTS) return;
+    const t = Math.min(1, (elapsedReal - INFESTATION_STARTS) / (FULL_INFESTATION - INFESTATION_STARTS));
+    const target = Math.round(dandelions.length + t * (MAX_DANDELIONS - dandelions.length));
+    while (dandelions.length < target && dandelions.length < MAX_DANDELIONS) {
+      dandelions.push(spawnNeglectDandelion());
+    }
+  }
+
   function saveWorld() {
     if (!hasChrome || !blades.length) return;
     chrome.storage.local.set({
@@ -1176,6 +1213,7 @@
   if (new URLSearchParams(location.search).has('clean')) {
     document.getElementById('chips').style.display = 'none';
     soundBtn.style.display = 'none';
+    document.getElementById('coffeeBtn').style.display = 'none';
   }
 
   function updateChips() {
@@ -1217,7 +1255,8 @@
         makeLawn(seed);
 
         const savedAt = data.worldSavedAt || data.dandySavedAt || Date.now();
-        const offline = Math.min(86400, Math.max(0, (Date.now() - savedAt) / 1000)) * OFFLINE_SCALE;
+        const elapsedReal = Math.min(86400, Math.max(0, (Date.now() - savedAt) / 1000));
+        const offline = elapsedReal * OFFLINE_SCALE;
 
         if (Array.isArray(data.grass) && data.grass.length === blades.length) {
           for (let i = 0; i < blades.length; i++) {
@@ -1239,6 +1278,7 @@
           const revived = simulateOffline(data.dandelions, offline);
           dandelions.length = 0;
           dandelions.push(...revived);
+          topUpForNeglect(elapsedReal);
           // plants saved under older tuning adopt the current ranges
           for (const d of dandelions) {
             if (!(d.maxStem >= 150)) d.maxStem = 150 + Math.random() * 35;

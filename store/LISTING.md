@@ -22,8 +22,6 @@ Copy-paste as you go.
 **Description** (the long field — paste exactly, emoji included):
 
 ```
-Finally, a way to touch grass without going outside.
-
 Let's be honest with each other: you were not going to go outside today. The outside has weather, insects, and other people. But everyone keeps telling you to touch grass, and technically, nobody ever specified which grass.
 
 Grass Toucher puts a small, quietly judgmental lawn in your browser toolbar. It is soft. It is green. It is always there for you, unlike the sun.
@@ -43,6 +41,8 @@ WHAT YOU'LL BE DOING INSTEAD OF GOING OUTSIDE
 💾 Live with your choices. Your lawn is persistent. The grass keeps growing while you work, and the dandelions keep scheming. Ignore them all afternoon and you'll reopen to an invasion that is, legally speaking, your fault.
 
 Every time you mow, a little message congratulates you. It is not sincere. It knows exactly how long you've been online today.
+
+If you genuinely enjoy this more than is medically advisable, there's a small ☕ in the corner of the lawn that leads to buymeacoffee.com/tyleredic. Entirely optional. The grass does not care either way.
 
 PRIVACY
 
