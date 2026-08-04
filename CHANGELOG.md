@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.1 — 2026-08-04
+
+- Newly-spawned dandelion seeds now take 2–7 minutes (was as little as 5
+  seconds) before they start growing. A mowed lawn was appearing to
+  "regrow instantly" — really, several already-puffed survivors were
+  finishing their independent blow cycle within the first minute and
+  their children had almost no dormancy, so new sprouts showed up right
+  behind the mower. This was never mowing spawning anything (cutting
+  still always just kills, no spread) — the fix is entirely in how long a
+  new seed waits before it's visible.
+
 ## 1.2.0 — 2026-08-04
 
 - Grass now takes 10 minutes to regrow from a buzz cut while the popup is

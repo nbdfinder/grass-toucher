@@ -386,10 +386,12 @@
     };
   }
 
-  // Seeds don't all germinate at once: dormancy spans minutes, so a brood
-  // from one puff arrives as scattered individuals, not a generation.
+  // A new seed always takes real, noticeable time before it starts growing —
+  // "some time" after its parent puffs, never near-instant — and dormancy
+  // spans minutes so a brood arrives as scattered individuals, not a
+  // generation appearing all at once.
   function seedDormancy() {
-    return 5 + Math.random() * 240;
+    return 120 + Math.random() * 300; // 2 to 7 minutes
   }
 
   // A plant at a random point in its life, for populating a lawn that
