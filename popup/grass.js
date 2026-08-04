@@ -1212,8 +1212,7 @@
   // ?clean hides the UI — for promo shots
   if (new URLSearchParams(location.search).has('clean')) {
     document.getElementById('chips').style.display = 'none';
-    soundBtn.style.display = 'none';
-    document.getElementById('coffeeBtn').style.display = 'none';
+    document.getElementById('topRight').style.display = 'none';
   }
 
   function updateChips() {
