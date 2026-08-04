@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0 — 2026-08-04
+
+- Grass now takes 10 minutes to regrow from a buzz cut while the popup is
+  open (was ~4), and 1 hour while closed (was ~42 min) — dandelion growth
+  stays locked at exactly 2x that rate, so it scales along with it.
+- Simplified the "neglected lawn" dandelion logic: removed the real-time
+  absence-tracking ramp entirely. Instead, a fresh install now starts with
+  the lawn already fully populated (24 dandelions at a believable mix of
+  ages/stages) — after that, population is left to the ordinary
+  grow/spread/get-mowed cycle.
+
 ## 1.1.1 — 2026-08-03
 
 - Moved the ☕ button out of the bottom-right corner (top-right, next to the
