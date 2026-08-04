@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 — 2026-08-03
+
+- Moved the ☕ button out of the bottom-right corner (top-right, next to the
+  sound toggle instead) — it was sitting on top of mowable grass.
+
 ## 1.1.0 — 2026-07-29
 
 - Neglected lawns now fill with dandelions the way a real one would: absence
